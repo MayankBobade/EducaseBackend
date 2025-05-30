@@ -16,6 +16,13 @@ const pool = mysql2.createPool({
   queueLimit: 0
 });
 
+console.log('MYSQLHOST:', process.env.MYSQLHOST);
+console.log('MYSQLUSER:', process.env.MYSQLUSER);
+console.log('MYSQLPASSWORD:', process.env.MYSQLPASSWORD ? '****' : 'EMPTY');
+console.log('MYSQLDATABASE:', process.env.MYSQLDATABASE);
+console.log('MYSQLPORT:', process.env.MYSQLPORT);
+
+
 // Test the connection
 const checkConnection = async () => {
     try {
