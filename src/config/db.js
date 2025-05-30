@@ -4,24 +4,15 @@ const dotenv = require('dotenv');
 // Load environment variables
 dotenv.config();
 
-
 const pool = mysql2.createPool({
-  host: process.env.MYSQLHOST,
-  user: process.env.MYSQLUSER,
-  password: process.env.MYSQLPASSWORD,
-  database: process.env.MYSQLDATABASE,
-  port: process.env.MYSQLPORT || 3306,
-  waitForConnections: true,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   connectionLimit: 10,
-  queueLimit: 0
+  queueLimit: 0,
+  waitForConnections: true
 });
-
-console.log('MYSQLHOST:', process.env.MYSQLHOST);
-console.log('MYSQLUSER:', process.env.MYSQLUSER);
-console.log('MYSQLPASSWORD:', process.env.MYSQLPASSWORD ? '****' : 'EMPTY');
-console.log('MYSQLDATABASE:', process.env.MYSQLDATABASE);
-console.log('MYSQLPORT:', process.env.MYSQLPORT);
-
 
 // Test the connection
 const checkConnection = async () => {
